@@ -1,5 +1,7 @@
 # design-please
 
+<img width="1584" height="396" alt="Github-design-please" src="https://github.com/user-attachments/assets/ef12f8aa-cc62-4f6a-8db2-6b8533e13164" />
+
 An open-source, AI-native framework for scoping, defining, and encoding a company's visual and behavioral design direction.
 
 Takes reference products, brand adjectives, existing screenshots, and codebases as raw material. Produces operational design artifacts: a discovery brief, a design brief, a design system spec, and a Claude Design configuration. Built to be used with [Claude Code](https://claude.ai/code) and [Claude Design](https://www.anthropic.com/news/claude-design-anthropic-labs).
