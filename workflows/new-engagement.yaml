@@ -1,0 +1,73 @@
+# Design System — New Engagement
+#
+# The standard flow for building a design system from scratch.
+# Produces: discovery-brief.md, design-brief.md, design-system-spec.md,
+# claude-design-config.md (if handoff is Claude Design), and design-instructions.md.
+
+name: new-engagement
+description: >
+  Full design system creation flow. design-discover surfaces problem framing
+  and anchors across Look/Feel/Act, design-author builds the brief and system
+  spec, design-encode translates for Claude Design.
+
+steps:
+  - id: discover
+    skill: design-discover
+    purpose: >
+      Scope the engagement, audit existing assets, interview for Look/Feel/Act
+      anchors and anti-anchors, assess all 6 dimensions, and produce a
+      Discovery Brief.
+    input: >
+      Existing screenshots, URLs, Figma files, codebase, brand guidelines,
+      or verbal context from the user.
+    output: design/discovery-brief.md
+    notes: >
+      If the user arrives with a specific, complete direction and just needs
+      the encoder, this step can be skipped — but most new engagements
+      benefit from it. Anchors are where the signal lives; push for
+      specificity here rather than later.
+
+  - id: author
+    skill: design-author
+    depends_on: [discover]
+    purpose: >
+      Create the canonical Design Brief and Design System Spec from the
+      Discovery Brief.
+    input: design/discovery-brief.md
+    output:
+      - design/design-brief.md
+      - design/design-system-spec.md
+    gate: human-approval
+    notes: >
+      Present an outline before writing full artifacts. The teach-through-choice
+      pattern applies — where the user had no opinion, choose, cite reasoning,
+      and name alternatives.
+
+  - id: encode
+    skill: design-encode
+    depends_on: [author]
+    purpose: >
+      Translate the approved Design Brief and Spec into a paste-ready Claude
+      Design configuration and a human-readable instructions file.
+    input:
+      - design/design-brief.md
+      - design/design-system-spec.md
+    output:
+      - design/claude-design-config.md
+      - design/design-instructions.md
+    notes: >
+      Optional if the handoff target is not Claude Design. For Claude Design
+      specifically, the <defaults_to_avoid> block is the single highest-leverage
+      section — do not ship without it.
+
+# Expected timeline:
+#   Discovery: 30-60 minutes (scope + problem framing + anchor interview)
+#   Authoring: 45-90 minutes (outline, confirm, write Brief + Spec, review)
+#   Encoding: 20-40 minutes (systematic translation, default overrides,
+#             first-prompt template, drift watchlist)
+#   Total: 1.5-3 hours for a complete first-pass design system
+#
+# What comes after:
+#   - Use the config and instructions with Claude Design
+#   - Log recurring drift patterns for a future config tightening
+#   - design-refresh (V2) when the product evolves or direction shifts

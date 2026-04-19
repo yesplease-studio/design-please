@@ -1,0 +1,70 @@
+# Design System — Foundations Only
+#
+# A lightweight flow for users who need just enough structure to stop
+# fighting Claude Design's defaults. Produces: design-brief.md and
+# claude-design-config.md. Skips the full Design System Spec.
+
+name: design-foundations
+description: >
+  Minimum-viable design direction flow. Use when the user needs Claude
+  Design to stop producing house-style output but doesn't need a full
+  design system spec yet (typically: pitch decks, landing pages, one-off
+  marketing assets, single-screen products).
+
+steps:
+  - id: discover
+    skill: design-discover
+    purpose: >
+      Scope the engagement and interview for Look/Feel/Act anchors. Skip
+      the existing-assets audit if no prior design work exists. Produce a
+      lightweight Discovery Brief.
+    input: >
+      Verbal context, reference product names, brand adjectives, and
+      (if any) prior Claude Design output.
+    output: design/discovery-brief.md
+    notes: >
+      For a foundations engagement, discovery is tighter — 20-40 minutes
+      covering problem, three axes of anchors, and anti-anchors. Dimension
+      5 (design system scope) defaults to "tokens only" and does not need
+      deep interview.
+
+  - id: author
+    skill: design-author
+    depends_on: [discover]
+    purpose: >
+      Write the Design Brief. Skip the Design System Spec; tokens are
+      captured inline in the brief's Look Direction section.
+    input: design/discovery-brief.md
+    output: design/design-brief.md
+    gate: human-approval
+    notes: >
+      Scope is tokens-only, so Dim 5 is satisfied by the color, typography,
+      and spacing tokens in the brief itself. No separate spec needed for
+      this flow.
+
+  - id: encode
+    skill: design-encode
+    depends_on: [author]
+    purpose: >
+      Translate the brief into a Claude Design configuration with an
+      explicit default-override block and a first-prompt template.
+    input: design/design-brief.md
+    output:
+      - design/claude-design-config.md
+      - design/design-instructions.md
+    notes: >
+      This is the payload. For foundations-only engagements, the config
+      is the deliverable the user actually uses every time they open
+      Claude Design.
+
+# Expected timeline:
+#   Discovery: 20-40 minutes
+#   Authoring: 30-45 minutes
+#   Encoding: 15-25 minutes
+#   Total: 1-2 hours
+#
+# When to upgrade to new-engagement.yaml:
+#   - Project grows beyond one or two surfaces
+#   - Team expands and needs a shared system
+#   - Claude Design output is inconsistent across artifacts because
+#     atom-level components aren't pinned
