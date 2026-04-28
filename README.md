@@ -108,7 +108,7 @@ design-please/
 
 ## The please family
 
-`design-please` is one of five open-source frameworks:
+`design-please` is one of six open-source frameworks:
 
 | Framework | What it does | Core question |
 |-----------|-------------|---------------|
