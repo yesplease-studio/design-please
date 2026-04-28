@@ -117,6 +117,7 @@ design-please/
 | [sales-please](https://github.com/yesplease-studio/sales-please) | Deal qualification and pipeline management | "Is this deal worth pursuing?" |
 | [voice-please](https://github.com/yesplease-studio/voice-please) | Voice system definition and encoding | "What should we sound like?" |
 | **design-please** | Design direction and Claude Design encoding | "What should it look like, feel like, and act like?" |
+| [name-please](https://github.com/yesplease-studio/name-please) | Name validation and generation | "Is this the right name?" |
 
 Each framework is standalone. `voice-please` and `design-please` are siblings — voice operationalizes how the company sounds; design operationalizes how it looks, feels, and behaves.
 
