@@ -108,7 +108,7 @@ design-please/
 
 ## The please family
 
-`design-please` is one of six open-source frameworks:
+`design-please` is one of seven open-source frameworks:
 
 | Framework | What it does | Core question |
 |-----------|-------------|---------------|
@@ -118,6 +118,7 @@ design-please/
 | [voice-please](https://github.com/yesplease-studio/voice-please) | Voice system definition and encoding | "What should we sound like?" |
 | **design-please** | Design direction and Claude Design encoding | "What should it look like, feel like, and act like?" |
 | [name-please](https://github.com/yesplease-studio/name-please) | Name validation and generation | "Is this the right name?" |
+| [messaging-please](https://github.com/yesplease-studio/messaging-please) | Messaging architecture and GTM narrative | "What do we say, and to whom?" |
 
 Each framework is standalone. `voice-please` and `design-please` are siblings — voice operationalizes how the company sounds; design operationalizes how it looks, feels, and behaves.
 
